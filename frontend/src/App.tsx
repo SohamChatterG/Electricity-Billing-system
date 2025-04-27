@@ -9,10 +9,10 @@ import CustomersPage from './pages/Customers';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Bills from './pages/Bills';
+import Reports from './pages/Reports';
 import MeterReadings from './pages/MeterReadings';
 const Home = () => <div className="p-4 text-center text-xl">Welcome to the Electricity Billing System ⚡</div>;
 const Notifications = () => <div className="p-4">User Notifications</div>;
-const Reports = () => <div className="p-4">Reports Page</div>;
 
 const Navbar = () => {
   const { isLoggedIn, userRole } = useAuth();
@@ -31,6 +31,7 @@ const Navbar = () => {
 
             {userRole === 'admin' && (
               <>
+                <Link to="/reports" className="hover:underline">Reports</Link>
                 <Link to="/notifications" className="hover:underline">Notifications</Link>
                 <Link to="/reports" className="hover:underline">Reports</Link>
               </>
@@ -61,6 +62,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/reports" element={<Reports />} />
             <Route path="/connections" element={<ConnectionsPage />} />
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/bills" element={<Bills />} />
