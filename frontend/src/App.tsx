@@ -11,9 +11,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import Bills from './pages/Bills';
 import Reports from './pages/Reports';
 import MeterReadings from './pages/MeterReadings';
-const Home = () => <div className="p-4 text-center text-xl">Welcome to the Electricity Billing System ⚡</div>;
-const Notifications = () => <div className="p-4">User Notifications</div>;
-
+import Notifications from './pages/Notifications';
+import HomeImage from "./assets/HomeImage.png"
+const Home = () => (
+  <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50">
+    <img src={HomeImage} alt="Home" className="w-3/4 max-w-4xl rounded-lg shadow-lg" />
+    <h1 className="text-3xl font-bold mt-8 text-blue-700">Welcome to the Electricity Billing System</h1>
+    <p className="text-lg mt-4 text-gray-600">Manage bills, connections, and reports efficiently!</p>
+  </div>
+);
 const Navbar = () => {
   const { isLoggedIn, userRole } = useAuth();
 
@@ -24,15 +30,15 @@ const Navbar = () => {
         <Link to="/" className="hover:underline">Home</Link>
         {isLoggedIn ? (
           <>
-            <Link to="/customers" className="hover:underline">Customers</Link>
-            <Link to="/connections" className="hover:underline">Connections</Link>
-            <Link to="/meter-readings" className="hover:underline">Meter</Link>
             <Link to="/bills" className="hover:underline">Bills</Link>
+            <Link to="/notifications" className="hover:underline">Notifications</Link>
 
             {userRole === 'admin' && (
               <>
-                <Link to="/reports" className="hover:underline">Reports</Link>
-                <Link to="/notifications" className="hover:underline">Notifications</Link>
+                <Link to="/customers" className="hover:underline">Customers</Link>
+                <Link to="/connections" className="hover:underline">Connections</Link>
+                <Link to="/meter-readings" className="hover:underline">Meter</Link>
+
                 <Link to="/reports" className="hover:underline">Reports</Link>
               </>
             )}
